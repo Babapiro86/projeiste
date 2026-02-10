@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Teknoloji Bağımlılığı</title>
+</head>
+<body>
+    <h1>Teknoloji Bağımlılığı</h1>
+    <div class="b">
+        <p id="c1">...</p>
+        <p id="c2"></p>
+        <p id="c3"></p>
+    </div>
+    <script>
+        var el = document.querySelectorAll('#c1, #c2, #c3');
+        function g() {
+            fetch('/api/bilgi')
+                .then(r => r.json())
+                .then(d => {
+                    d.cumleler.forEach((s, i) => el[i].textContent = s)
+                })
+        }
+        g();
+        setInterval(g, 1e4);
+    </script>
+</body>
+</html>
